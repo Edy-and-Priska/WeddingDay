@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Gallery</title>
+  <link rel="Website icon" type="png" href="images/married icon.png">
+  <!-- Include Animate.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    href="https://fonts.googleapis.com/css2?family=Birthstone+Bounce&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Reset default margin and padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container for images */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center images */
+    }
+
+    /* Make images responsive */
+    .image {
+      width: 100vw; /* Full viewport width */
+      height: auto; /* Maintain aspect ratio */
+      display: block;
+    }
+
+    /* Hide the body initially */
+    body {
+      opacity: 0;
+      --animate-duration: 6s; /* Adjust the fade-in speed here */
+    }
+
+    /* Ensure the body is visible after the fade-in animation */
+    .animate__fadeIn {
+      opacity: 1;
+    }
+
+    #countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Birthstone Bounce', cursive; /* Apply the font */
+  text-align: center;
+  margin-top: 20px;
+}
+
+.timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-unit span {
+  display: block;
+}
+
+.timer-unit .label {
+  font-size: 16px;
+  color: #666;
+  margin-top: 5px;
+  text-transform: capitalize;
+}
+
+#days, #hours, #minutes, #seconds {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.album-container {
+            position: relative;
+            perspective: 2000px;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .album-container::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
+        .album {
+            transform-style: preserve-3d;
+            position: relative;
+            transition: transform 1s;
+        }
+        .album-page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform-origin: left center;
+            transition: transform 1s;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .album-page img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .page-cover {
+            z-index: 10;
+        }
+        .page-back {
+            transform: rotateY(180deg);
+        }
+        .flipping {
+            transform: rotateY(-180deg);
+        }
+        .nav-btn {
+          transition: all 0.3s ease;
+        }
+        .nav-btn:hover {
+            transform: scale(1.1);
+        }
+        .nav-btn:active {
+            transform: scale(1);
+        }
+        /* Ensure no overflow on body */
+        body {
+            overflow-x: hidden;
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+   <img src="images/1.jpg" class="image">
+   <div id="countdown">
+    <div class="timer-unit">
+      <span id="days">0</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="timer-unit">
+      <span id="hours">00</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="timer-unit">
+      <span id="minutes">00</span>
+      <span class="label">Minutes</span>
+    </div>
+    <div class="timer-unit">
+      <span id="seconds">00</span>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+   <img src="images/2.jpg" class="image">
+  </div>
+
+    <!-- Wedding Album Section - Updated for centering -->
+  <div class="flex flex-col items-center justify-center px-4 py-8 "> <!-- Added padding and light bg -->
+    <h1 class="text-3xl md:text-4xl font-serif text-center text-rose-600 mb-8">Our Wedding Memories</h1>
+    
+    <div class="album-container mx-auto w-full max-w-4xl"> <!-- Removed duplicate max-w class -->
+      <!-- Album -->
+      <div class="album w-full h-96 md:h-[32rem] bg-white rounded-lg shadow-xl overflow-hidden">
+        <!-- Cover Page -->
+        <div class="album-page page-cover">
+          <img src="cover.jpg" alt="Wedding Album Cover" class="w-full h-full object-cover">
+        </div>
+        
+        <!-- Pages will be dynamically inserted here -->
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <button id="prevBtn" class="nav-btn absolute left-0 top-1/2 -translate-y-1/2 -translate-x-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button id="nextBtn" class="nav-btn absolute right-0 top-1/2 -translate-y-1/2 translate-x-10 bg-white/80 hover:bg-white p-2 rounded-full shadow-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="text-center mt-6 text-gray-600 max-w-4xl w-full">
+      <p id="pageIndicator" class="font-serif">Click to view our wedding album</p>
+    </div>
+  </div>
+
+ 
+  <script>
+    // Add the fade-in effect when the page loads
+    window.onload = function() {
+      // Add the Animate.css classes to the body
+      document.body.classList.add('animate__animated', 'animate__fadeIn');
+      document.body.style.opacity = 1; // Ensure the body becomes visible
+    };
+
+    // Play music if the flag is set
+    if (sessionStorage.getItem("music-playing") === "true") {
+      const music = new Audio("music/Zui Mei Qing Lu.mp3");
+      music.loop = true;
+      music.play();
+      sessionStorage.removeItem("music-playing"); // Remove flag to prevent replay
+    }
+  </script>
+
+  <script>
+    let zoomLevel = 1; // Default zoom level
+
+    // Listen for CTRL + Mouse Scroll
+    window.addEventListener("wheel", function(event) {
+      if (event.ctrlKey) { // Check if CTRL is pressed
+        event.preventDefault(); // Prevent default browser zoom
+
+        if (event.deltaY < 0) {
+          zoomLevel += 0.1; // Zoom in
+        } else {
+          zoomLevel -= 0.1; // Zoom out
+        }
+
+        if (zoomLevel < 0.5) zoomLevel = 0.5; // Minimum zoom limit
+        if (zoomLevel > 2) zoomLevel = 2; // Maximum zoom limit
+
+        document.body.style.transform = `scale(${zoomLevel})`; // Apply zoom effect
+        document.body.style.transformOrigin = "center top"; // Keep scaling from the center
+      }
+    });
+  </script>
+</body>
+</html>
