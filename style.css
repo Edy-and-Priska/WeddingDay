@@ -37,6 +37,14 @@ body {
   transform: scale(1.05);
 }
 
+/* Remove the default background highlight on mobile */
+.invitation-button:focus,
+.invitation-button:active {
+  outline: none; /* Remove focus outline */
+  box-shadow: none; /* Remove box shadow */
+  -webkit-tap-highlight-color: transparent; /* Disable the tap highlight on mobile */
+}
+
 /* Optional: Adjust button size at different screen widths */
 @media (min-width: 768px) {
   .invitation-button {
