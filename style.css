@@ -37,6 +37,11 @@ body {
   transform: scale(1.05);
 }
 
+a {
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none; /* Removes underline (if any) */
+}
+
 /* Optional: Adjust button size at different screen widths */
 @media (min-width: 768px) {
   .invitation-button {
@@ -108,8 +113,3 @@ body {
     margin: 0 5px;
   }
 
-/* Fade-out effect */
-.fade-out {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
