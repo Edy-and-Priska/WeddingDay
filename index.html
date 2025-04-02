@@ -11,10 +11,35 @@
 </head>
 
 <body>
-    <div class="container">
-      <!-- Clickable Image Button -->
-      <a href="#" class="button"></a>
-      <img src="images/Buka Undangan2.png" class="button" onclick="redirectToContent()" alt="Click Me">
+  <div class="landing-container">
+    <img src="images/landing-page.jpg" alt="Landing Page" class="landing-image">
+    
+    <div class="button-container">
+      <a href="Wedding Gallery.html" id="weddingButton">
+            <img src="images/Buka Undangan2.png" alt="Open Invitation" class="invitation-button" onclick="playMusicAndRedirect()">
+        </a>
     </div>
+</div>
+
+<audio id="weddingMusic" src="audio/wedding-song.mp3"></audio>
+
+<script>
+  function playMusicAndRedirect() {
+    let music = document.getElementById("weddingMusic");
+
+    // Store flag in sessionStorage before redirect
+    sessionStorage.setItem("music-playing", "true");
+
+    // Redirect first
+    window.location.href = "Wedding Gallery.html";
+
+    // Try playing music
+    music.play().catch(error => {
+      console.log("Autoplay blocked: " + error);
+    });
+  }
+</script>
+
+
     <script src="script.js"></script>
 </body>
