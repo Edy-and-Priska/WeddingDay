@@ -263,23 +263,26 @@
     </div>
     <img src="images/3.jpg" class="image">
 
-  <script>
-    // Add the fade-in effect when the page loads
-    window.onload = function() {
-      // Add the Animate.css classes to the body
-      document.body.classList.add('animate__animated', 'animate__fadeIn');
-      document.body.style.opacity = 1; // Ensure the body becomes visible
-    };
-
-    // Play music if the flag is set
-    if (sessionStorage.getItem("music-playing") === "true") {
-      const music = new Audio("music/Zui Mei Qing Lu.mp3");
-      music.loop = true;
-      music.play();
-      sessionStorage.removeItem("music-playing"); // Remove flag to prevent replay
-    }
-  </script>
-
+    <script>
+      window.onload = function() {
+        // Add fade-in effect
+        document.body.classList.add('animate__animated', 'animate__fadeIn');
+        document.body.style.opacity = 1; // Ensure visibility
+    
+        // Check if music should continue playing
+        if (sessionStorage.getItem("music-playing") === "true") {
+          let music = document.getElementById("weddingMusic");
+          if (music) {
+            music.play().catch(error => {
+              console.log("Autoplay blocked: " + error);
+            });
+          }
+        }
+      };
+    </script>
+    
+    <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" loop></audio>
+      
   <script>
     let zoomLevel = 1; // Default zoom level
 
@@ -302,5 +305,6 @@
       }
     });
   </script>
+  
 </body>
 </html>
