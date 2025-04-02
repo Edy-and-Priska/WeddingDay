@@ -1,98 +1,97 @@
-/* Reset default margins & padding */
-* {
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-html, body {
-  overflow: hidden;
+.landing-container {
+  position: relative;
   width: 100%;
-  height: 100%;
 }
 
-body {
-  background-image: url('images/landing-page.jpg');
-  background-size: contain; /* or 100% 100% */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px; /* Add safe space */
+.landing-image {
+  width: 100%;
+  display: block;
 }
 
-/* Background Image Container */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
+/* Button container centers the button properly */
+.button-container {
+  position: absolute;
+  top: 20%; /* Adjust this to move up/down */
+  left: 50%; /* Start at 50% of parent */
+  transform: translateX(-50%); /* Pull back by 50% of button width */
+  width: 100%; /* Ensures button stays centered */
+  text-align: center; /* Extra safety for centering */
+}
+
+/* Button scales responsively but stays centered */
+.invitation-button {
+  max-width: 80%; /* Adjust freely without breaking position */
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.invitation-button:hover {
+  transform: scale(1.05);
+}
+
+/* Optional: Adjust button size at different screen widths */
+@media (min-width: 768px) {
+  .invitation-button {
+      max-width: 90%; /* Bigger on small screens */
   }
+  .button-container {
+      top: 15%; /* Adjust vertical position on mobile if needed */
+  }
+}
+@media (min-width: 400px) {
+  .invitation-button {
+      max-width: 45%; /* Bigger on small screens */
+  }
+  .button-container {
+      top: 28%; /* Adjust vertical position on mobile if needed */
+  }
+}
+@media (min-width: 300px) {
+  .invitation-button {
+      max-width: 45%; /* Bigger on small screens */
+  }
+  .button-container {
+      top: 28%; /* Adjust vertical position on mobile if needed */
+  }
+}  
+@media (min-width: 1280px) {
+  .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+  }
+  .button-container {
+      top: 29.7%; /* Adjust vertical position on mobile if needed */
+  }
+}  
 
-
-/* Clickable Image Button */
-.button {
-    background-image: url('images/Buka Undangan2.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 20%; /* Relative width */
-    max-width: 300px; /* Maximum size */
-    position: absolute; /* Instead of absolute */
-    margin: 20px auto; /* Center horizontally */
-    display: block;
+  #countdown {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
   }
   
-  @media (min-width: 1000px) {
-    .button {
-      width: 10%;
-      top: 29.5%
-    }
+  #countdown span {
+    padding: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 5px;
+    margin: 0 5px;
   }
 
-  @media (max-width: 768px) {
-    .button {
-      width: 30%;
-      top: 28%
-    }
-  } 
+/* Fade-out effect */
+.fade-out {
+  opacity: 0;
+  transition: opacity 3s ease-out;
+}
 
-  @media (max-width: 540px) {
-    .button {
-      width: 27.5%;
-      top: 28%
-    }
-  } 
-  
-  @media (max-width: 430px) {
-    .button {
-      width: 40%;
-      top: 31.5%
-    }
-  }
-    
-  @media (max-width: 375px) {
-    .button {
-      width: 40%;
-      top: 26.5%
-    }
-  }
-
-  @media (max-width: 360px) {
-    .button {
-      width: 40%;
-      top: 29.5%
-    }
-  }
-
-  @media (max-width: 344px) {
-    .button {
-      width: 40%;
-      top: 33.5%
-    }
-  }
   
   #countdown {
     font-size: 24px;
