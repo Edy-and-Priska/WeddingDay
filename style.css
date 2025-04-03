@@ -113,14 +113,3 @@ a, a:focus, a:active {
     margin: 0 5px;
   }
 
-  .invitation-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
-  
-  .invitation-button img {
-    width: 100%;
-    height: auto;
-  }
