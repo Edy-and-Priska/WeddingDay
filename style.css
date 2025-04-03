@@ -37,9 +37,9 @@ body {
   transform: scale(1.05);
 }
 
-a {
-  -webkit-tap-highlight-color: transparent;
-  text-decoration: none; /* Removes underline (if any) */
+a, a:focus, a:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Optional: Adjust button size at different screen widths */
@@ -94,7 +94,7 @@ a {
 /* Fade-out effect */
 .fade-out {
   opacity: 0;
-  transition: opacity 3s ease-out;
+  transition: opacity 2s ease-out;
 }
 
   
@@ -102,7 +102,7 @@ a {
     font-size: 24px;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1px;
   }
   
   #countdown span {
@@ -113,3 +113,14 @@ a {
     margin: 0 5px;
   }
 
+  .invitation-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .invitation-button img {
+    width: 100%;
+    height: auto;
+  }
