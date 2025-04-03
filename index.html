@@ -14,11 +14,15 @@
     <img src="images/landing-page.jpg" alt="Landing Page" class="landing-image">
     
     <div class="button-container">
-      <button onclick="handleButtonClick()" class="invitation-button">
-        <img src="images/Buka Undangan2.png" alt="Open Invitation">
-      </button>
+      <a href="Wedding Gallery.html" onclick="playMusicAndRedirect()">
+        <img 
+          src="images/Buka Undangan2.png" 
+          alt="Open Invitation" 
+          class="invitation-button"
+        >
+      </a>
     </div>
-  </div>
+</div>
 
   <audio id="weddingMusic" src="audio/wedding-song.mp3"></audio>
 
@@ -29,7 +33,7 @@
     music.load();
     music.autoplay = true; // Helps some browsers
     
-    function handleButtonClick() {
+    function playMusicAndRedirect() {
       // Set flag in localStorage that music should play
       localStorage.setItem("shouldPlayMusic", "true");
       
