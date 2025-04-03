@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta property="og:image" content="https://edy-and-priska.github.io/WeddingDay/images/married-icon.png">
-  <title>Edy & Priska Juniyati Wedding</title>
+  <title>Edy & Priska Juniyati Wedding </title>
   <link rel="Website icon" type="png" href="images/married-icon.png">
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -24,42 +25,25 @@
     </div>
 </div>
 
-  <audio id="weddingMusic" src="audio/wedding-song.mp3"></audio>
+<audio id="weddingMusic" src="audio/wedding-song.mp3"></audio>
 
-  <script>
-    const music = document.getElementById("weddingMusic");
-    
-    // Preload and autoplay settings
-    music.load();
-    music.autoplay = true; // Helps some browsers
-    
-    function playMusicAndRedirect() {
-      // Set flag in localStorage that music should play
-      localStorage.setItem("shouldPlayMusic", "true");
-      
-      // First try to play the music
-      const playPromise = music.play();
-      
-      if (playPromise !== undefined) {
-        playPromise
-          .then(_ => {
-            // On success, redirect after a small delay
-            setTimeout(() => {
-              window.location.href = "Wedding Gallery.html";
-            }, 300);
-          })
-          .catch(error => {
-            console.log("Playback failed:", error);
-            // Still redirect even if playback fails
-            window.location.href = "Wedding Gallery.html";
-          });
-      } else {
-        // For browsers that don't return a promise
-        setTimeout(() => {
-          window.location.href = "Wedding Gallery.html";
-        }, 300);
-      }
-    }
-  </script>
+<script>
+  function playMusicAndRedirect() {
+    let music = document.getElementById("weddingMusic");
+
+    // Store flag in sessionStorage before redirect
+    sessionStorage.setItem("music-playing", "true");
+
+    // Redirect first
+    window.location.href = "Wedding Gallery.html";
+
+    // Try playing music
+    music.play().catch(error => {
+      console.log("Autoplay blocked: " + error);
+    });
+  }
+</script>
+
+
+    <script src="script.js"></script>
 </body>
-</html>
