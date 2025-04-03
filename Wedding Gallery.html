@@ -300,7 +300,23 @@
     </script>
     
     <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" loop></audio>
-      
+    <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" autoplay loop></audio>
+
+<script>
+  // Check if music should play
+  if (localStorage.getItem("shouldPlayMusic") === "true") {
+    const music = document.getElementById("weddingMusic");
+    music.volume = 0.5; // Set appropriate volume
+    
+    // Try to play with user interaction
+    document.addEventListener('click', function() {
+      music.play().catch(e => console.log("Playback error:", e));
+    }, { once: true });
+    
+    // Clear the flag
+    localStorage.removeItem("shouldPlayMusic");
+  }
+</script>  
   <script>
     let zoomLevel = 1; // Default zoom level
 
