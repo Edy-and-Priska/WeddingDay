@@ -2,48 +2,786 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta property="og:image" content="https://edy-and-priska.github.io/WeddingDay/images/married-icon.png">
-  <title>Edy & Priska Juniyati Wedding </title>
-  <link rel="Website icon" type="png" href="images/married-icon.png">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Edy & Priska Wedding</title>
+  <link rel="icon" href="images/married-icon.png">
+  <script src="script.js"></script>
+  
+  <style>
+    /* Reset default margins & padding */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
 
+    /* Landing Page (Full-screen cover) */
+    .landing-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/landing-page.jpg') no-repeat center center;
+      background-size: cover;
+      z-index: 1000; /* Ensures it stays on top */
+      transition: opacity 6s ease;
+    }
+
+    /* Button styling */
+    .button-container {
+      position: absolute;
+      top: 20%; /* Adjust this to move up/down */
+      left: 50%; /* Start at 50% of parent */
+      transform: translateX(-50%); /* Pull back by 50% of button width */
+      width: 100%; /* Ensures button stays centered */
+      text-align: center; /* Extra safety for centering */
+}
+    
+    .invitation-button {
+      cursor: pointer;
+      max-width: 80%; /* Adjust freely without breaking position */
+      width: auto;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none; /* Optional: Prevents text selection */
+      -webkit-user-select: none; /* For older browsers */
+    }
+
+    .invitation-button:hover {
+      transform: scale(1.05);
+}
+
+    @media (max-width: 344px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 34%;
+      left: 53%;
+      width: 77%;
+    }
+}  
+    @media (max-width: 1024px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 24%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 912px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 27%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 820px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 26.2%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 768px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 24.2%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 430px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 32.5%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 412px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 33%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 390px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 32.5%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 375px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 30.5%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 360px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 32%;
+      left: 53%;
+      width: 77%;
+    }}
+    @media (max-width: 344px) {
+    .invitation-button {
+      max-width: 46%; /* Bigger on small screens */
+    }
+    .button-container {
+      top: 34%;
+      left: 53%;
+      width: 77%;
+    }}
+
+    a, a:focus, a:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+    /* Main Content (Hidden initially) */
+    .main-content {
+      display: none; /* Hidden until button click */
+      padding: 0px;
+      width: 100vw; /* Use viewport width */
+      max-width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      overflow-x: hidden; /* Prevent horizontal overflow */
+    }
+    /* When visible */
+    .main-content.visible {
+    display: block;}
+
+    .landing-container.fade-out {
+      opacity: 0; /* Fade to transparent */
+      animation: fadeout 4s ease-out;
+    }
+
+    /* Optional: Fade-in effect */
+    .fade-in {
+      animation: fadeIn 4s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+/* Countdown Container */
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  padding: 15px;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Equal-width Timer Units */
+.timer-unit {
+  flex: 1; /* Equal width distribution */
+  min-width: 0; /* Allows flex items to shrink */
+  background: rgb(255, 208, 1);
+  border-radius: 8px;
+  padding: 12px 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Number Style */
+.timer-unit span:first-child {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.2;
+}
+
+/* Label Style */
+.timer-unit span.label {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: upperccaase;
+  letter-spacing: 0.5px;
+  margin-top: 5px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  #countdown {
+    gap: 5px;
+    padding: 10px;
+  }
+  
+  .timer-unit span:first-child {
+    font-size: 1.5rem;
+  }
+  
+  .timer-unit span.label {
+    font-size: 0.7rem;
+  }
+}
+
+/* Fade-out effect */
+.fade-out {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+  .image-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;  
+    }
+  </style>
 </head>
 
 <body>
-  <div class="landing-container">
-    <img src="images/landing-page.jpg" alt="Landing Page" class="landing-image">
-    
+  <!-- ===== LANDING PAGE (VISIBLE FIRST) ===== -->
+  <div class="landing-container" id="landingPage">
     <div class="button-container">
-      <a href="Wedding Gallery.html" onclick="playMusicAndRedirect()">
-        <img 
-          src="images/Buka Undangan2.png" 
-          alt="Open Invitation" 
-          class="invitation-button"
-        >
-      </a>
+      <img 
+        src="images/Buka Undangan2.png" 
+        alt="Open Invitation" 
+        class="invitation-button" 
+        id="openInvitationBtn"
+      >
+    </div>
+  </div>
+
+  <!-- ===== MAIN CONTENT (HIDDEN UNTIL BUTTON CLICK) ===== -->
+  <div class="main-content" id="mainContent">
+    <div class="image-container"></div>
+    <img src="images/1.jpg" class="image">
+    <div id="countdown">
+    <div class="timer-unit">
+      <span id="days">0</span>
+      <span class="label">Days</span>
+    </div>
+    <div class="timer-unit">
+      <span id="hours">00</span>
+      <span class="label">Hours</span>
+    </div>
+    <div class="timer-unit">
+      <span id="minutes">00</span>
+      <span class="label">Minutes</span>
+    </div>
+    <div class="timer-unit">
+      <span id="seconds">00</span>
+      <span class="label">Seconds</span>
+    </div>
+  </div>
+  <script src="script.js"></script>
+   <img src="images/2.jpg" class="image2">
+   <style>
+    .image2 {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      top: 10%;    
+    }
+   </style>
+   
+   <div id="wedding-album-container">
+    <div class="wa-container">
+        <div class="wa-album">
+            <!-- Cover -->
+            <div class="wa-page wa-cover" id="wa-cover">
+                <div class="wa-image-container">
+                    <img src="cover.jpg" alt="Wedding Album Cover" class="wa-album-image">
+                </div>
+                <div class="wa-open-prompt">Our Wedding Album</div>
+            </div>
+            
+            <!-- Pages 1-10 -->
+            <div class="wa-page" id="wa-page1">
+                <div class="wa-image-container">
+                    <img src="photo1.jpg" alt="Wedding Photo 1" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page2">
+                <div class="wa-image-container">
+                    <img src="photo2.jpg" alt="Wedding Photo 2" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page3">
+                <div class="wa-image-container">
+                    <img src="photo3.jpg" alt="Wedding Photo 3" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page4">
+                <div class="wa-image-container">
+                    <img src="photo4.jpg" alt="Wedding Photo 4" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page5">
+                <div class="wa-image-container">
+                    <img src="photo5.jpg" alt="Wedding Photo 5" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page6">
+                <div class="wa-image-container">
+                    <img src="photo6.jpg" alt="Wedding Photo 6" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page7">
+                <div class="wa-image-container">
+                    <img src="photo7.jpg" alt="Wedding Photo 7" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page8">
+                <div class="wa-image-container">
+                    <img src="photo8.jpg" alt="Wedding Photo 8" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page9">
+                <div class="wa-image-container">
+                    <img src="photo9.jpg" alt="Wedding Photo 9" class="wa-album-image">
+                </div>
+            </div>
+            <div class="wa-page" id="wa-page10">
+                <div class="wa-image-container">
+                    <img src="photo10.jpg" alt="Wedding Photo 10" class="wa-album-image">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="wa-navigation" id="wa-navButtons" style="display: none;">
+            <button class="wa-nav-btn" id="wa-prevBtn" disabled>‹ Previous</button>
+            <span class="wa-page-indicator" id="wa-pageIndicator">Cover</span>
+            <button class="wa-nav-btn" id="wa-nextBtn">Next ›</button>
+        </div>
     </div>
 </div>
+<style>
+    /* Reset for just the album container */
+    #wedding-album-container * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Playfair Display', serif;
+        margin-bottom: 30px; /* Adjust this value as needed */
+    }
+    
+    /* Main container */
+    #wedding-album-container .wa-container {
+        position: relative;
+        width: min(95vw, 800px);
+        height: min(95vh, 600px);
+        perspective: 2000px;
+        margin: 2rem auto;
+    }
+    
+    /* Album styles */
+    #wedding-album-container .wa-album {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+    
+    /* Page styles */
+    #wedding-album-container .wa-page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform-origin: left center;
+        background: white;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+        overflow: hidden;
+        transition: transform 2.2s ease;
+        backface-visibility: hidden;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Image container */
+    #wedding-album-container .wa-image-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    /* Image styles */
+    #wedding-album-container .wa-album-image {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* Cover styles */
+    #wedding-album-container .wa-cover {
+        z-index: 11;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    
+    #wedding-album-container .wa-cover .wa-album-image {
+        object-fit: cover;
+        box-shadow: none;
+    }
+    
+    /* Open prompt */
+    #wedding-album-container .wa-open-prompt {
+        position: absolute;
+        bottom: 30%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 1rem;
+        animation: wa-gentlePulse 2s infinite;
+    }
+    
+    @keyframes wa-gentlePulse {
+        0% { opacity: 0.8; }
+        50% { opacity: 1; }
+        100% { opacity: 0.8; }
+    }
+    
+    /* Navigation */
+    #wedding-album-container .wa-navigation {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+    }
+    
+    #wedding-album-container .wa-nav-btn {
+        padding: 8px 16px;
+        background: #d4af37;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-family: 'Playfair Display', serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    #wedding-album-container .wa-nav-btn:hover:not(:disabled) {
+        background: #c19b3c;
+        transform: translateY(-2px);
+    }
+    
+    #wedding-album-container .wa-nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    #wedding-album-container .wa-page-indicator {
+        font-size: 1.1rem;
+        color: #555;
+        text-align: center;
+        min-width: 120px;
+    }
+    
+    /* Initial state */
+    #wedding-album-container .wa-page:not(.wa-cover) {
+        transform: rotateY(-180deg);
+        display: none;
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 600px) {
+        #wedding-album-container .wa-container {
+            height: min(90vh, 500px);
+        }
+        
+        #wedding-album-container .wa-nav-btn {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+        
+        #wedding-album-container .wa-page-indicator {
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+        
+        #wedding-album-container .wa-image-container {
+            padding: 10px;
+        }
+    }
+    </style>
+    <script>
+    (function() {
+    // Scoped variables
+    let currentPageIndex = -1; // -1 = cover, 0-9 = pages
+    const totalPages = 10;
+    let isAnimating = false;
+    let returnTimeout = null;
 
-<audio id="weddingMusic" src="audio/wedding-song.mp3"></audio>
+    // Scoped DOM elements with wa- prefix
+    const cover = document.getElementById('wa-cover');
+    const pages = Array.from(document.querySelectorAll('#wedding-album-container .wa-page:not(.wa-cover)'));
+    const prevBtn = document.getElementById('wa-prevBtn');
+    const nextBtn = document.getElementById('wa-nextBtn');
+    const pageIndicator = document.getElementById('wa-pageIndicator');
+    const navButtons = document.getElementById('wa-navButtons');
 
-<script>
-  function playMusicAndRedirect() {
-    let music = document.getElementById("weddingMusic");
-
-    // Store flag in sessionStorage before redirect
-    sessionStorage.setItem("music-playing", "true");
-
-    // Redirect first
-    window.location.href = "Wedding Gallery.html";
-
-    // Try playing music
-    music.play().catch(error => {
-      console.log("Autoplay blocked: " + error);
+    // Initialize - scoped to our container
+    pages.forEach(page => {
+        page.style.transform = 'rotateY(-180deg)';
+        page.style.display = 'none';
     });
-  }
+
+    // Scoped event listeners
+    cover.addEventListener('click', startAlbum);
+    prevBtn.addEventListener('click', goToPreviousPage);
+    nextBtn.addEventListener('click', goToNextPage);
+
+    function startAlbum() {
+        if (isAnimating) return;
+        clearTimeout(returnTimeout);
+        
+        isAnimating = true;
+        cover.style.transform = 'rotateY(-180deg)';
+        navButtons.style.display = 'flex';
+        
+        setTimeout(() => {
+            cover.style.display = 'none';
+            showPage(0);
+            currentPageIndex = 0;
+            isAnimating = false;
+            updateNavigation();
+        }, 800);
+    }
+
+    function goToNextPage() {
+        if (isAnimating || currentPageIndex >= totalPages - 1) return;
+        clearTimeout(returnTimeout);
+        
+        isAnimating = true;
+        const currentPage = pages[currentPageIndex];
+        flipPageOut(currentPage);
+        
+        currentPageIndex++;
+        const nextPage = pages[currentPageIndex];
+        showPage(currentPageIndex);
+        
+        setTimeout(() => {
+            isAnimating = false;
+            updateNavigation();
+            
+            // Auto-return if on last page
+            if (currentPageIndex === totalPages - 1) {
+                returnTimeout = setTimeout(() => {
+                    returnToCover();
+                }, 4000);
+            }
+        }, 800);
+    }
+
+    function goToPreviousPage() {
+        if (isAnimating || currentPageIndex < 0) return;
+        clearTimeout(returnTimeout);
+        
+        isAnimating = true;
+        const currentPage = pages[currentPageIndex];
+        flipPageOut(currentPage);
+        
+        currentPageIndex--;
+        
+        if (currentPageIndex === -1) {
+            setTimeout(() => {
+                currentPage.style.display = 'none';
+                cover.style.display = 'flex';
+                cover.style.transform = 'rotateY(0deg)';
+                isAnimating = false;
+                navButtons.style.display = 'none';
+            }, 800);
+            return;
+        }
+        
+        showPage(currentPageIndex);
+        
+        setTimeout(() => {
+            isAnimating = false;
+            updateNavigation();
+        }, 800);
+    }
+
+    function returnToCover() {
+        if (currentPageIndex !== totalPages - 1) return;
+        
+        isAnimating = true;
+        const currentPage = pages[currentPageIndex];
+        flipPageOut(currentPage);
+        
+        setTimeout(() => {
+            currentPage.style.display = 'none';
+            cover.style.display = 'flex';
+            cover.style.transform = 'rotateY(0deg)';
+            currentPageIndex = -1;
+            isAnimating = false;
+            navButtons.style.display = 'none';
+            updateNavigation();
+        }, 800);
+    }
+
+    // Helper functions with scoped operations
+    function flipPageOut(page) {
+        page.style.transform = 'rotateY(-180deg)';
+        setTimeout(() => {
+            page.style.display = 'none';
+        }, 800);
+    }
+
+    function showPage(index) {
+        const page = pages[index];
+        page.style.display = 'flex';
+        page.style.transform = 'rotateY(0deg)';
+    }
+
+    function updateNavigation() {
+        prevBtn.disabled = currentPageIndex <= 0;
+        nextBtn.disabled = currentPageIndex >= totalPages - 1;
+        
+        if (currentPageIndex === -1) {
+            pageIndicator.textContent = 'Cover';
+        } else {
+            pageIndicator.textContent = `Page ${currentPageIndex + 1} of ${totalPages}`;
+        }
+    }
+
+    // Optional: Make available globally if needed
+    window.waAlbum = {
+        next: goToNextPage,
+        prev: goToPreviousPage,
+        open: startAlbum
+    };
+})();
 </script>
 
+   <img src="images/3.jpg" class="image">
+  
+</style>
+  </div>
+    
+    <script>
+      window.onload = function() {
+        // Add fade-in effect
+        document.body.classList.add('animate__animated', 'animate__fadeIn');
+        document.body.style.opacity = 1; // Ensure visibility
+    
+        // Check if music should continue playing
+        if (sessionStorage.getItem("music-playing") === "true") {
+          let music = document.getElementById("weddingMusic");
+          if (music) {
+            music.play().catch(error => {
+              console.log("Autoplay blocked: " + error);
+            });
+          }
+        }
+      };
+    </script>
+    
+    <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" loop></audio>
+      
+  <script>
+    let zoomLevel = 1; // Default zoom level
 
-    <script src="script.js"></script>
+    // Listen for CTRL + Mouse Scroll
+    window.addEventListener("wheel", function(event) {
+      if (event.ctrlKey) { // Check if CTRL is pressed
+        event.preventDefault(); // Prevent default browser zoom
+
+        if (event.deltaY < 0) {
+          zoomLevel += 0.1; // Zoom in
+        } else {
+          zoomLevel -= 0.1; // Zoom out
+        }
+
+        if (zoomLevel < 0.5) zoomLevel = 0.5; // Minimum zoom limit
+        if (zoomLevel > 2) zoomLevel = 2; // Maximum zoom limit
+
+        document.body.style.transform = `scale(${zoomLevel})`; // Apply zoom effect
+        document.body.style.transformOrigin = "center top"; // Keep scaling from the center
+      }
+    });
+  </script>
+    <!-- PASTE YOUR ENTIRE WEDDING GALLERY CONTENT HERE -->
+  </div>
+
+  <!-- ===== BACKGROUND MUSIC ===== -->
+  <audio id="weddingMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    document.getElementById('openInvitationBtn').addEventListener('click', function() {
+      const landingPage = document.getElementById('landingPage');
+      const mainContent = document.getElementById('mainContent');
+      const music = document.getElementById('weddingMusic');
+
+      // 1. Play music (autoplay may require user interaction)
+      music.play().catch(e => console.log("Music play failed. User may need to interact first."));
+      landingPage.classList.add('fade-out');
+      // 2. Fade out landing page
+      landingPage.style.opacity = '0';
+      setTimeout(() => {
+        landingPage.style.display = 'none'; // Hide completely after fade
+      }, 1500); // Matches CSS transition time
+
+      // 3. Show main content with fade-in effect
+      mainContent.style.display = 'block';
+      mainContent.classList.add('fade-in');
+    });
+  </script>
+
 </body>
+</html>
