@@ -317,9 +317,43 @@
       }
     }
   </style>
+
+  <style>
+    /* Snowflakes styling */
+#snowflakesContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.snowflake {
+  position: absolute;
+  color: #14edf5;
+  font-size: 1em;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 1000;
+  opacity: 0.8;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+} 
+  </style>
 </head>
 
 <body>
+   <!-- Snowflakes Container -->
+   <div id="snowflakesContainer"></div>
+
   <!-- ===== LANDING PAGE ===== -->
   <div class="landing-container" id="landingPage">
     <div>
@@ -595,6 +629,9 @@
 
       // Play music
       music.play().catch(e => console.log("Music play failed. User may need to interact first."));
+
+      // Start infinite snowflakes
+     startSnowfall();
       
       // Fade out landing page
       landingPage.classList.add('fade-out');
@@ -606,6 +643,59 @@
       mainContent.style.display = 'block';
       mainContent.classList.add('fade-in');
     });
+
+    // Infinite snowflake variables
+let snowInterval;
+const snowflakeSymbols = ['❄', '❆', '✻', '✼', '✽'];
+
+function startSnowfall() {
+  const container = document.getElementById('snowflakesContainer');
+  
+  // Clear any existing interval
+  if (snowInterval) clearInterval(snowInterval);
+  
+  // Create initial batch of snowflakes
+  createSnowflakes(container);
+  
+  // Keep creating new snowflakes every 300ms
+  snowInterval = setInterval(() => {
+    createSnowflakes(container);
+  }, 300);
+}
+
+function createSnowflakes(container) {
+  // Create 3-5 snowflakes at a time
+  const count = Math.floor(Math.random() * 3) + 3;
+  
+  for (let i = 0; i < 1; i++) {
+    const snowflake = document.createElement('div');
+    const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+    snowflake.innerHTML = randomSymbol;
+    snowflake.classList.add('snowflake');
+    
+    // Random properties
+    const size = Math.random() * 1.5 + 0.5;
+    const startX = Math.random() * window.innerWidth;
+    const duration = Math.random() * 5 + 5; // Longer duration (5-10 seconds)
+    const delay = Math.random() * 2;
+    const opacity = Math.random() * 0.7 + 0.3;
+    
+    snowflake.style.left = `${startX}px`;
+    snowflake.style.fontSize = `${size}em`;
+    snowflake.style.animationDuration = `${duration}s`;
+    snowflake.style.animationDelay = `${delay}s`;
+    snowflake.style.opacity = opacity;
+    
+    container.appendChild(snowflake);
+    
+    // Remove snowflake after animation completes
+    setTimeout(() => {
+      if (snowflake.parentNode) {
+        snowflake.remove();
+      }
+    }, (duration + delay) * 1000);
+  }
+}
 
     // Wedding Album Script
     (function() {
