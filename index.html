@@ -18,34 +18,31 @@
     }
 
     .landing-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('images/landing-page.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; /* Change this to 'contain' if you don't want any cropping */
-  z-index: 1000;
-  transition: opacity 6s ease;
-  
-  /* Optional: Add a fallback background color */
-  background-color: #f0f0f0;
-}
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/landing-page.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      z-index: 1000;
+      transition: opacity 6s ease;
+      background-color: #f0f0f0;
+    }
 
-/* For no cropping at all (may leave empty spaces) */
-.landing-container.no-crop {
-  background-size: contain;
-  background-color: #000; /* Add dark background to fill empty space */
-}
+    /* For no cropping at all (may leave empty spaces) */
+    .landing-container.no-crop {
+      background-size: contain;
+      background-color: #000;
+    }
 
-/* For perfect display without cropping (best compromise) */
-.landing-container.optimal {
-  background-size: cover;
-  background-position: top center; /* Adjust based on your image composition */
-}
-
+    /* For perfect display without cropping (best compromise) */
+    .landing-container.optimal {
+      background-size: cover;
+      background-position: top center;
+    }
     
     a, a:focus, a:active {
       outline: none;
@@ -316,67 +313,59 @@
         padding: 10px;
       }
     }
-  </style>
 
-  <style>
     /* Snowflakes styling */
-#snowflakesContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-}
+    #snowflakesContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-.snowflake {
-  position: absolute;
-  color: #14edf5;
-  font-size: 1em;
-  pointer-events: none;
-  animation: fall linear forwards;
-  z-index: 1000;
-  opacity: 0.8;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
+    .snowflake {
+      position: absolute;
+      color: #14edf5;
+      font-size: 1em;
+      pointer-events: none;
+      animation: fall linear forwards;
+      z-index: 1000;
+      opacity: 0.8;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
 
-@keyframes fall {
-  to {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-} 
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    } 
 
-/* Remove tap highlight for all interactive elements */
-button, a, input, textarea, select {
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-}
+    /* Remove tap highlight for all interactive elements */
+    button, a, input, textarea, select {
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
 
-/* Specifically for your pulse button */
-.pulse-button {
-  /* Your existing styles */
-  
-  /* Ensure no highlight */
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent;
-  
-  /* For some Android devices */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  
-  /* For iOS Safari */
-  -webkit-touch-callout: none;
-}
+    /* Specifically for your pulse button */
+    .pulse-button {
+      /* Your existing styles */
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
 
-/* Active state styling */
-.pulse-button:active {
-  transform: scale(0.98); /* Slight press effect */
-  background-color: #ffc5d3; /* Same as normal state */
-}
+    /* Active state styling */
+    .pulse-button:active {
+      transform: scale(0.98);
+      background-color: #ffc5d3;
+    }
   </style>
 </head>
 
@@ -401,7 +390,7 @@ button, a, input, textarea, select {
       justify-content: center;
       gap: 12px;
       padding: 12px 25px;
-      font-size: clamp(14px, 2vw, 18px); /* Responsive font size */
+      font-size: clamp(14px, 2vw, 18px);
       font-weight: bold;
       color: rgb(0, 0, 0);
       background: #ffc5d3;
@@ -419,7 +408,7 @@ button, a, input, textarea, select {
     
     .button-icon {
       width: auto;
-      height: clamp(20px, 3vw, 28px); /* Responsive image height */
+      height: clamp(20px, 3vw, 28px);
       object-fit: contain;
     }
     
@@ -443,104 +432,95 @@ button, a, input, textarea, select {
       }
     }
     
-@media screen and (min-width: 344px) and (max-width: 359px) {
-  .pulse-button {
-    top: 38%;
+    @media screen and (min-width: 344px) and (max-width: 359px) {
+      .pulse-button {
+        top: 38%;
         left: 27%;
         padding: 14px 22px;
         gap: 6px;
-  }
-}
-@media screen and (min-width: 360px) and (max-width: 374px) {
-  .pulse-button {
-    top: 38%;
+      }
+    }
+    @media screen and (min-width: 360px) and (max-width: 374px) {
+      .pulse-button {
+        top: 38%;
         left: 31%;
         padding: 8px 9px;
         gap: 6px;
-  }
-}
-@media screen and (min-width: 375px) and (max-width: 389px) {
-  .pulse-button {
-    top: 37.8%;
+      }
+    }
+    @media screen and (min-width: 375px) and (max-width: 389px) {
+      .pulse-button {
+        top: 37.8%;
         left: 33%;
         padding: 8px 12px;
         gap: 6px;
-  }
-}
-@media screen and (min-width: 390px) and (max-width: 400px) {
-  .pulse-button {
-    top: 37.5%;
+      }
+    }
+    @media screen and (min-width: 390px) and (max-width: 400px) {
+      .pulse-button {
+        top: 37.5%;
         left: 31%;
         padding: 14px 22px;
         gap: 6px;
-  }
-}
-/* Surface Duo (540px) */
-@media screen and (min-width: 401px) and (max-width: 500px) {
-  .pulse-button {
-    top: 38.5%;
-    left: 34%;
-    padding: 9px 18px;
-    gap: 6px;
-  }
-}
-/* iPad Air (820px) */
-@media screen and (min-width: 540px) and (max-width: 767px) {
-  .pulse-button {
-    top: 34.5%;
+      }
+    }
+    @media screen and (min-width: 401px) and (max-width: 500px) {
+      .pulse-button {
+        top: 38.5%;
+        left: 34%;
+        padding: 9px 18px;
+        gap: 6px;
+      }
+    }
+    @media screen and (min-width: 540px) and (max-width: 767px) {
+      .pulse-button {
+        top: 34.5%;
         left: 37%;
         padding: 11px 22px;
         gap: 8px;
-  }
-}
-
-/* Zenbook Fold (853px) */
-@media screen and (min-width: 768px) and (max-width: 818px) {
-  .pulse-button {
-    top: 35%;
+      }
+    }
+    @media screen and (min-width: 768px) and (max-width: 818px) {
+      .pulse-button {
+        top: 35%;
         left: 40%;
         padding: 12px 24px;
         gap: 9px;
-  }
-}
-
-@media screen and (min-width: 819px) and (max-width: 830px) {
-  .pulse-button {
-    top: 35.5%;
+      }
+    }
+    @media screen and (min-width: 819px) and (max-width: 830px) {
+      .pulse-button {
+        top: 35.5%;
         left: 39%;
         padding: 20px 38px;
         gap: 16px;
-  }
-}
-
-/* Surface Pro (912px) */
-@media screen and (min-width: 830px) and (max-width: 911px) {
-  .pulse-button {
-    top: 33%;
+      }
+    }
+    @media screen and (min-width: 830px) and (max-width: 911px) {
+      .pulse-button {
+        top: 33%;
         left: 40%;
         padding: 13px 26px;
         gap: 10px;
-  }
-}
-@media screen and (min-width: 912px) and (max-width: 1023px) {
-  .pulse-button {
-    top: 37%;
+      }
+    }
+    @media screen and (min-width: 912px) and (max-width: 1023px) {
+      .pulse-button {
+        top: 37%;
         left: 41%;
         padding: 13px 26px;
         gap: 10px;
-  }
-}
-/* iPad Pro (1024px) */
-@media screen and (min-width: 1024px) and (max-width: 1100px) {
-  .pulse-button {
-    top: 30%;
+      }
+    }
+    @media screen and (min-width: 1024px) and (max-width: 1100px) {
+      .pulse-button {
+        top: 30%;
         left: 41%;
         padding: 14px 28px;
         gap: 12px;
-  }
-}
-
- </style>
+      }
+    }
+    </style>
   </div>
 
   <!-- ===== MAIN CONTENT ===== -->
@@ -651,6 +631,73 @@ button, a, input, textarea, select {
   <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" loop></audio>
 
   <script>
+    // Snowflake effect control
+    let snowInterval;
+    let snowflakesPaused = false;
+    const snowflakeSymbols = ['❄', '❆', '✻', '✼', '✽'];
+
+    function startSnowfall() {
+      const container = document.getElementById('snowflakesContainer');
+      
+      // Clear any existing interval
+      if (snowInterval) clearInterval(snowInterval);
+      
+      // Create initial batch of snowflakes
+      createSnowflakes(container);
+      
+      // Keep creating new snowflakes every 300ms
+      snowInterval = setInterval(() => {
+        if (!snowflakesPaused) {
+          createSnowflakes(container);
+        }
+      }, 300);
+    }
+
+    function pauseSnowflakes() {
+      snowflakesPaused = true;
+      // Clear all existing snowflakes
+      const container = document.getElementById('snowflakesContainer');
+      container.innerHTML = '';
+    }
+
+    function resumeSnowflakes() {
+      snowflakesPaused = false;
+    }
+
+    function createSnowflakes(container) {
+      // Create 3-5 snowflakes at a time
+      const count = Math.floor(Math.random() * 3) + 3;
+      
+      for (let i = 0; i < 1; i++) {
+        const snowflake = document.createElement('div');
+        const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+        snowflake.innerHTML = randomSymbol;
+        snowflake.classList.add('snowflake');
+        
+        // Random properties
+        const size = Math.random() * 1.5 + 0.5;
+        const startX = Math.random() * window.innerWidth;
+        const duration = Math.random() * 5 + 5;
+        const delay = Math.random() * 2;
+        const opacity = Math.random() * 0.7 + 0.3;
+        
+        snowflake.style.left = `${startX}px`;
+        snowflake.style.fontSize = `${size}em`;
+        snowflake.style.animationDuration = `${duration}s`;
+        snowflake.style.animationDelay = `${delay}s`;
+        snowflake.style.opacity = opacity;
+        
+        container.appendChild(snowflake);
+        
+        // Remove snowflake after animation completes
+        setTimeout(() => {
+          if (snowflake.parentNode) {
+            snowflake.remove();
+          }
+        }, (duration + delay) * 1000);
+      }
+    }
+
     // Main invitation button functionality
     document.getElementById('pulse-button').addEventListener('click', function() {
       const landingPage = document.getElementById('landingPage');
@@ -661,7 +708,7 @@ button, a, input, textarea, select {
       music.play().catch(e => console.log("Music play failed. User may need to interact first."));
 
       // Start infinite snowflakes
-     startSnowfall();
+      startSnowfall();
       
       // Fade out landing page
       landingPage.classList.add('fade-out');
@@ -673,59 +720,6 @@ button, a, input, textarea, select {
       mainContent.style.display = 'block';
       mainContent.classList.add('fade-in');
     });
-
-    // Infinite snowflake variables
-let snowInterval;
-const snowflakeSymbols = ['❄', '❆', '✻', '✼', '✽'];
-
-function startSnowfall() {
-  const container = document.getElementById('snowflakesContainer');
-  
-  // Clear any existing interval
-  if (snowInterval) clearInterval(snowInterval);
-  
-  // Create initial batch of snowflakes
-  createSnowflakes(container);
-  
-  // Keep creating new snowflakes every 300ms
-  snowInterval = setInterval(() => {
-    createSnowflakes(container);
-  }, 300);
-}
-
-function createSnowflakes(container) {
-  // Create 3-5 snowflakes at a time
-  const count = Math.floor(Math.random() * 3) + 3;
-  
-  for (let i = 0; i < 1; i++) {
-    const snowflake = document.createElement('div');
-    const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
-    snowflake.innerHTML = randomSymbol;
-    snowflake.classList.add('snowflake');
-    
-    // Random properties
-    const size = Math.random() * 1.5 + 0.5;
-    const startX = Math.random() * window.innerWidth;
-    const duration = Math.random() * 5 + 5; // Longer duration (5-10 seconds)
-    const delay = Math.random() * 2;
-    const opacity = Math.random() * 0.7 + 0.3;
-    
-    snowflake.style.left = `${startX}px`;
-    snowflake.style.fontSize = `${size}em`;
-    snowflake.style.animationDuration = `${duration}s`;
-    snowflake.style.animationDelay = `${delay}s`;
-    snowflake.style.opacity = opacity;
-    
-    container.appendChild(snowflake);
-    
-    // Remove snowflake after animation completes
-    setTimeout(() => {
-      if (snowflake.parentNode) {
-        snowflake.remove();
-      }
-    }, (duration + delay) * 1000);
-  }
-}
 
     // Wedding Album Script
     (function() {
@@ -775,6 +769,9 @@ function createSnowflakes(container) {
         elements.cover.style.transform = 'rotateY(-180deg)';
         elements.navButtons.style.display = 'flex';
         
+        // Pause snowflakes when album opens
+        pauseSnowflakes();
+
         setTimeout(() => {
           elements.cover.style.visibility = 'hidden';
           showPage(0);
@@ -825,6 +822,8 @@ function createSnowflakes(container) {
             elements.cover.style.transform = 'rotateY(0deg)';
             state.isAnimating = false;
             elements.navButtons.style.display = 'none';
+            // Resume snowflakes only when returning to cover
+            resumeSnowflakes();
           }, config.animationDuration);
           return;
         }
@@ -853,6 +852,9 @@ function createSnowflakes(container) {
           state.isAnimating = false;
           elements.navButtons.style.display = 'none';
           updateNavigation();
+          
+          // Resume snowflakes when album fully closes
+          resumeSnowflakes();
         }, config.animationDuration);
       }
 
@@ -921,6 +923,5 @@ function createSnowflakes(container) {
       }
     });
   </script>
-   <script src="script.js"></script>
 </body>
 </html>
