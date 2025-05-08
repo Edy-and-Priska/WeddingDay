@@ -347,6 +347,36 @@
     opacity: 0;
   }
 } 
+
+/* Remove tap highlight for all interactive elements */
+button, a, input, textarea, select {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+/* Specifically for your pulse button */
+.pulse-button {
+  /* Your existing styles */
+  
+  /* Ensure no highlight */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+  
+  /* For some Android devices */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  /* For iOS Safari */
+  -webkit-touch-callout: none;
+}
+
+/* Active state styling */
+.pulse-button:active {
+  transform: scale(0.98); /* Slight press effect */
+  background-color: #ffc5d3; /* Same as normal state */
+}
   </style>
 </head>
 
