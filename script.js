@@ -6,7 +6,7 @@ if (event.persisted) { // Check if the page is loaded from the cache
 }
 
 // Set the target date and time in Jakarta time (UTC+7)
-const targetDate = new Date("2025-06-19T10:00:00+07:00"); // January 1, 2024, 00:00:00 Jakarta time
+const targetDate = new Date("2025-06-19T09:00:00+07:00"); // January 1, 2024, 00:00:00 Jakarta time
 // Convert the target date to a UTC timestamp
 const targetTime = targetDate.getTime();
 
