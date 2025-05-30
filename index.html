@@ -636,9 +636,20 @@
         </div>
       </div>
     </div>
-    
+
+      <!-- Wedding Video -->
+<div style="max-width: 400px; margin: 2rem auto; padding: 0 15px;">
+  <h2 style="text-align:center; font-family:'Playfair Display', serif;">Our Wedding Slideshow</h2>
+  <video id="weddingVideo" width="100%" controls preload="none" poster="photo1.jpg">
+    <source src="Wedding Slide.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
     <img src="images/3.jpg" class="image">
   </div>
+
+
 
   <!-- Background Music -->
   <audio id="weddingMusic" src="music/Zui Mei Qing Lu.mp3" loop></audio>
@@ -935,6 +946,39 @@
         document.body.style.transformOrigin = "center top";
       }
     });
+
+// Handle video play/pause and interaction
+const video = document.getElementById("weddingVideo");
+const music = document.getElementById("weddingMusic");
+
+let hasEntered = false;
+
+// This runs after "Buka Undangan" is clicked
+document.getElementById('pulse-button').addEventListener('click', function () {
+  hasEntered = true;
+});
+
+// This will now only trigger if the user has entered the site
+video.addEventListener("play", () => {
+  if (hasEntered) {
+    music.pause();
+    pauseSnowflakes();
+  }
+});
+
+video.addEventListener("pause", () => {
+  if (hasEntered) {
+    music.play().catch(() => {});
+    resumeSnowflakes();
+  }
+});
+
+video.addEventListener("ended", () => {
+  if (hasEntered) {
+    music.play().catch(() => {});
+    resumeSnowflakes();
+  }
+});
   </script>
   <script src="script.js"></script>
 </body>
